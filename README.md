@@ -7,13 +7,13 @@ languages code based on a database schema or a custom query.
   <a href="#installing" title="Installing">Installing</a> |
   <a href="#building" title="Building">Building</a> |
   <a href="#using" title="Using">Using</a> |
-  <a href="https://github.com/xo/xo/releases" title="Releases">Releases</a>
+  <a href="https://github.com/datumbrain/xo/releases" title="Releases">Releases</a>
 </p>
 
 [![Releases][release-status]][Releases]
 [![Discord Discussion][discord-status]][discord]
 
-[releases]: https://github.com/xo/xo/releases "Releases"
+[releases]: https://github.com/datumbrain/xo/releases "Releases"
 [release-status]: https://img.shields.io/github/v/release/xo/xo?display_name=tag&sort=semver "Latest Release"
 [discord]: https://discord.gg/WDWAgXwJqN "Discord Discussion"
 [discord-status]: https://img.shields.io/discord/829150509658013727.svg?label=Discord&logo=Discord&colorB=7289da&style=flat-square "Discord Discussion"
@@ -129,7 +129,7 @@ Install `xo` in the usual Go fashion:
 
 ```sh
 # install latest xo version
-$ go install github.com/xo/xo@latest
+$ go install github.com/datumbrain/xo@latest
 ```
 
 ## Quickstart
