@@ -115,42 +115,42 @@ func PostgresGoType(d xo.Type, schema, itype string) (string, string, error) {
 	case "boolean":
 		goType, zero = "bool", "false"
 		if typNullable {
-			goType, zero = "sql.NullBool", "sql.NullBool{}"
+			goType, zero = "nulltypes.NullBool", "nulltypes.NullBool{}"
 		}
 	case "bpchar", "character varying", "character", "inet", "money", "text", "name":
 		goType, zero = "string", `""`
 		if typNullable {
-			goType, zero = "sql.NullString", "sql.NullString{}"
+			goType, zero = "nulltypes.NullString", "nulltypes.NullString{}"
 		}
 	case "smallint":
 		goType, zero = "int16", "0"
 		if typNullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "integer":
 		goType, zero = itype, "0"
 		if typNullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "bigint":
 		goType, zero = "int64", "0"
 		if typNullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "real":
 		goType, zero = "float32", "0.0"
 		if typNullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "double precision", "numeric":
 		goType, zero = "float64", "0.0"
 		if typNullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "date", "timestamp with time zone", "time with time zone", "time without time zone", "timestamp without time zone":
 		goType, zero = "time.Time", "time.Time{}"
 		if typNullable {
-			goType, zero = "sql.NullTime", "sql.NullTime{}"
+			goType, zero = "nulltypes.NullTime", "nulltypes.NullTime{}"
 		}
 	case "bit":
 		goType, zero = "uint8", "0"

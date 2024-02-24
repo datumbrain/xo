@@ -1817,7 +1817,7 @@ func (f *Funcs) convertTypes(fkey ForeignKey) string {
 		}
 		// convert types
 		typ, refType := field.Type, refField.Type
-		if strings.HasPrefix(typ, "sql.Null") {
+		if strings.HasPrefix(typ, "nulltypes.Null") {
 			expr = expr + "." + typ[8:]
 			typ = strings.ToLower(typ[8:])
 		}
@@ -2690,7 +2690,7 @@ func addLegacyFuncs(ctx context.Context, funcs template.FuncMap) {
 			return expr
 		}
 		ft := f.Type
-		if strings.HasPrefix(ft, "sql.Null") {
+		if strings.HasPrefix(ft, "nulltypes.Null") {
 			expr = expr + "." + f.Type[8:]
 			ft = strings.ToLower(f.Type[8:])
 		}

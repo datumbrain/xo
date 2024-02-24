@@ -172,7 +172,7 @@ WHERE n.nspname = %%schema string%%
 ENDSQL
 
 # postgres table column list query
-FIELDS='FieldOrdinal int,ColumnName string,DataType string,NotNull bool,DefaultValue sql.NullString,IsPrimaryKey bool,Comment sql.NullString'
+FIELDS='FieldOrdinal int,ColumnName string,DataType string,NotNull bool,DefaultValue nulltypes.NullString,IsPrimaryKey bool,Comment nulltypes.NullString'
 COMMENT='{{ . }} is a column.'
 $XOBIN query $PGDB -M -B -2 -T Column -F PostgresTableColumns -Z "$FIELDS" --type-comment "$COMMENT" -o $DEST $@ << ENDSQL
 SELECT

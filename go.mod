@@ -24,6 +24,7 @@ require (
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver/v3 v3.2.1 // indirect
+	github.com/datumbrain/nulltypes v0.0.0-20220127183023-3a9d8a48e6ed // indirect
 	github.com/fatih/color v1.16.0 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect

@@ -34,7 +34,7 @@ func OracleGoType(d xo.Type, schema, itype, utype string) (string, string, error
 	case "char", "nchar", "varchar", "varchar2", "nvarchar2", "clob", "nclob", "rowid":
 		goType, zero = "string", `""`
 		if d.Nullable {
-			goType, zero = "sql.NullString", "sql.NullString{}"
+			goType, zero = "nulltypes.NullString", "nulltypes.NullString{}"
 		}
 	case "number":
 		switch {
@@ -43,21 +43,21 @@ func OracleGoType(d xo.Type, schema, itype, utype string) (string, string, error
 		case d.Scale != 0 && !d.Nullable:
 			goType, zero = "float64", "0.0"
 		case d.Scale != 0 && d.Nullable:
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		case !d.Nullable:
 			goType, zero = "int64", "0"
 		default:
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "float":
 		goType, zero = "float64", "0.0"
 		if d.Nullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "date", "timestamp", "timestamp with time zone", "timestamp with local time zone":
 		goType, zero = "time.Time", "time.Time{}"
 		if d.Nullable {
-			goType, zero = "sql.NullTime", "sql.NullTime{}"
+			goType, zero = "nulltypes.NullTime", "nulltypes.NullTime{}"
 		}
 	case "blob", "long raw", "raw", "xmltype":
 		goType, zero = "[]byte", "nil"
@@ -68,8 +68,8 @@ func OracleGoType(d xo.Type, schema, itype, utype string) (string, string, error
 	switch {
 	case goType == "int64" && d.Prec == 1 && !d.Nullable:
 		goType, zero = "bool", "false"
-	case goType == "sql.NullInt64" && d.Prec == 1 && d.Nullable:
-		goType, zero = "sql.NullBool", "sql.NullBool{}"
+	case goType == "nulltypes.NullInt64" && d.Prec == 1 && d.Nullable:
+		goType, zero = "nulltypes.NullBool", "nulltypes.NullBool{}"
 	}
 	return goType, zero, nil
 }

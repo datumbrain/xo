@@ -28,22 +28,22 @@ func Sqlite3GoType(d xo.Type, schema, itype, utype string) (string, string, erro
 	case "bool", "boolean":
 		goType, zero = "bool", "false"
 		if d.Nullable {
-			goType, zero = "sql.NullBool", "sql.NullBool{}"
+			goType, zero = "nulltypes.NullBool", "nulltypes.NullBool{}"
 		}
 	case "int", "integer", "tinyint", "smallint", "mediumint":
 		goType, zero = itype, "0"
 		if d.Nullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "bigint":
 		goType, zero = "int64", "0"
 		if d.Nullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "numeric", "real", "double", "float", "decimal":
 		goType, zero = "float64", "0.0"
 		if d.Nullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "blob":
 		goType, zero = "[]byte", "nil"
@@ -56,7 +56,7 @@ func Sqlite3GoType(d xo.Type, schema, itype, utype string) (string, string, erro
 		// case "varchar", "character", "varying character", "nchar", "native character", "nvarchar", "text", "clob", "time":
 		goType, zero = "string", `""`
 		if d.Nullable {
-			goType, zero = "sql.NullString", "sql.NullString{}"
+			goType, zero = "nulltypes.NullString", "nulltypes.NullString{}"
 		}
 	}
 	// if unsigned ...

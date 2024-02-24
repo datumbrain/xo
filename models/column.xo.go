@@ -4,7 +4,7 @@ package models
 
 import (
 	"context"
-	"database/sql"
+	"github.com/datumbrain/nulltypes"
 )
 
 // Column is a column.
@@ -13,9 +13,9 @@ type Column struct {
 	ColumnName   string         `json:"column_name"`    // column_name
 	DataType     string         `json:"data_type"`      // data_type
 	NotNull      bool           `json:"not_null"`       // not_null
-	DefaultValue sql.NullString `json:"default_value"`  // default_value
+	DefaultValue nulltypes.NullString `json:"default_value"`  // default_value
 	IsPrimaryKey bool           `json:"is_primary_key"` // is_primary_key
-	Comment      sql.NullString `json:"comment"`        // comment
+	Comment      nulltypes.NullString `json:"comment"`        // comment
 }
 
 // PostgresTableColumns runs a custom query, returning results as [Column].

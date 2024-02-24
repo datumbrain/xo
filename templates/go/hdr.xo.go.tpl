@@ -14,7 +14,7 @@ package {{ pkg }}
 
 import (
 	"context"
-	"database/sql"
+	"github.com/datumbrain/nulltypes"
 	"database/sql/driver"
 	"encoding/csv"
 	"errors"

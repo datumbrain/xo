@@ -33,44 +33,44 @@ func SqlserverGoType(d xo.Type, schema, itype, utype string) (string, string, er
 	case "tinyint", "bit":
 		goType, zero = "bool", "false"
 		if d.Nullable {
-			goType, zero = "sql.NullBool", "sql.NullBool{}"
+			goType, zero = "nulltypes.NullBool", "nulltypes.NullBool{}"
 		}
 	case "char", "money", "nchar", "ntext", "nvarchar", "smallmoney", "text", "varchar":
 		goType, zero = "string", `""`
 		if d.Nullable {
-			goType, zero = "sql.NullString", "sql.NullString{}"
+			goType, zero = "nulltypes.NullString", "nulltypes.NullString{}"
 		}
 	case "smallint":
 		goType, zero = "int16", "0"
 		if d.Nullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "int":
 		goType, zero = itype, "0"
 		if d.Nullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "bigint":
 		goType, zero = "int64", "0"
 		if d.Nullable {
-			goType, zero = "sql.NullInt64", "sql.NullInt64{}"
+			goType, zero = "nulltypes.NullInt64", "nulltypes.NullInt64{}"
 		}
 	case "real":
 		goType, zero = "float32", "0.0"
 		if d.Nullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "numeric", "decimal", "float":
 		goType, zero = "float64", "0.0"
 		if d.Nullable {
-			goType, zero = "sql.NullFloat64", "sql.NullFloat64{}"
+			goType, zero = "nulltypes.NullFloat64", "nulltypes.NullFloat64{}"
 		}
 	case "binary", "image", "varbinary", "xml":
 		goType, zero = "[]byte", "nil"
 	case "date", "time", "smalldatetime", "datetime", "datetime2", "datetimeoffset":
 		goType, zero = "time.Time", "time.Time{}"
 		if d.Nullable {
-			goType, zero = "sql.NullTime", "sql.NullTime{}"
+			goType, zero = "nulltypes.NullTime", "nulltypes.NullTime{}"
 		}
 	default:
 		goType, zero = schemaType(d.Type, d.Nullable, schema)
